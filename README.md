@@ -13,3 +13,17 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+
+NFT-Marketplace
+
+I have use the following technologies:
+
+- Solidity
+- Javascript
+- Nextjs
+- IPFS
+- Hardhat
+- OpenZeppelin
+- Ethers
+- Tailwind
