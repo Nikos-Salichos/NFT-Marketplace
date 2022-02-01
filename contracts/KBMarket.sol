@@ -107,32 +107,43 @@ contract KBMarket is ReentrancyGuard{
 
 
     //function to conduct transactions and market sales
-    function createMarketSale(address nftContract, uint256 itemId)
-            public payable nonReentrant{
-                uint256 price = idToMarketToken[itemId].price;
-                uint256 tokenId = idToMarketToken[itemId].tokenId;
-                require(msg.value == price, 'Please submit the asking price in order to buy it');
+    function createMarketSale(address nftContract, uint256 itemId) public payable nonReentrant{
+        uint256 price = idToMarketToken[itemId].price;
+        uint256 tokenId = idToMarketToken[itemId].tokenId;
+        require(msg.value == price, 'Please submit the asking price in order to buy it');
 
-                //transfer the amount to the seller
-                idToMarketToken[itemId].seller.transfer(msg.value);
+        //transfer the amount to the seller
+        idToMarketToken[itemId].seller.transfer(msg.value);
 
-                //transfer the token from contract address to the buyer
-                IERC721(nftContract).transferFrom(address(this),msg.sender,tokenId);
-                idToMarketToken[itemId].owner = payable(msg.sender);
-                idToMarketToken[itemId].sold = true;
-                _tokenSold.increment();
+        //transfer the token from contract address to the buyer
+        IERC721(nftContract).transferFrom(address(this),msg.sender,tokenId);
+        idToMarketToken[itemId].owner = payable(msg.sender);
+        idToMarketToken[itemId].sold = true;
+        _tokensSold.increment();
 
-                payable(owner).transfer(listingPrice);
-            }
-   
-   
-           //function to fetchMarketItems
-           
+        payable(owner).transfer(listingPrice);
     }
+   
 
+    //function to fetchMarketItems - minting, buying and selling
+    function fetchMarketTokens() public view returns(MarketToken[] memory){
+        uint256 itemCount = _tokenIds.current();
+        uint256 unsoldItemCount = _tokenIds.current() -  _tokensSold.current();
+        uint256 currentIndex = 0;
 
+        //looping over the number of items created (if number has not been sold populate the array)
+        MarketToken[] memory items = new MarketToken[](unsoldItemCount);
+            for (uint256 i = 0; i < itemCount; i++) {
+                if(idToMarketToken[i+1].owner == address(0)){
+                    uint256 currentId = i +1;
+                    MarketToken storage currentItem = idToMarketToken[currentId];
+                    items[currentIndex] = currentItem;
+                    currentIndex += 1;
+                }
+            }
 
+            return items;
+        }
 
-
-} //End of contract
-
+}
+ //End of contract
