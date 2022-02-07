@@ -176,4 +176,35 @@ contract KBMarket is ReentrancyGuard{
    }
 
 
+   //function for returning an array of minted NFTs
+   function fetchItemsCreated() public view returns(MarketToken[] memory){
+
+       //instead of .owner it will be .seller
+       uint256 totalItemCount = _tokenIds.current();
+       uint256 itemCount = 0;
+       uint256 currentIndex = 0;
+
+        for (uint256 i = 0; i < totalItemCount; i++) {
+            if (idToMarketToken[i+1].seller == msg.sender) {
+                itemCount +=1;
+            }
+        }
+
+        //second loop to loop through the amount you have purchased with itemcount
+        //check to see if the owner address is equal to msg.sender
+        MarketToken[] memory items = new MarketToken[](itemCount);
+        for (uint256  i = 0; i < totalItemCount; i++) {
+            if(idToMarketToken[i+1].seller == msg.sender){
+                uint currentId = idToMarketToken[i+1].itemId;
+
+                MarketToken storage currentItem = idToMarketToken[currentId];
+                items[currentIndex] = currentItem;
+                currentIndex += 1;
+            }
+        }
+
+        return items;
+   }
+
+
 }  //End of contract
