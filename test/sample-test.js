@@ -13,5 +13,8 @@ describe("Greeter", function () {
     await nft.deployed();
     const nftContractAddress = nft.address;
 
+    let listingPrice = await market.getListingPrice();
+    listingPrice = listingPrice.ToString();
+
   });
 });
