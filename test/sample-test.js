@@ -29,7 +29,6 @@ describe("KBMarket", function () {
     await market.makeMarketItem(nftContractAddress, 1, auctionPrice, { value: listingPrice })
     await market.makeMarketItem(nftContractAddress, 2, auctionPrice, { value: listingPrice })
 
-
     //test for different addresses from different users - test accounts
     //return an array of many addresses
     const [_, buyerAddress] = await ethers.getSigners()
@@ -37,7 +36,23 @@ describe("KBMarket", function () {
     //create a market sale with address, id and price
     await market.connect(buyerAddress).createMarketSale(nftContractAddress, 1, { value: auctionPrice })
 
-    const items = await market.fetchMarketTokens()
+    let items = await market.fetchMarketTokens()
+
+    items = await Promise.all(items.map(async i => {
+
+      const tokenUri = await nft.tokenURI(i.tokenId)
+
+      let item = {
+        price: i.price.toString(),
+        tokenId: i.tokenId.toString(),
+        seller: i.seller,
+        owner: i.owner,
+        tokenUri
+      }
+
+      return item;
+
+    }))
 
     //test out all the items
     console.log('items', items)
