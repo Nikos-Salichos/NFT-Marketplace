@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("Greeter", function () {
+describe("KBMarket", function () {
   it("Should mint and trade NFTs", async function () {
 
     //test to receive contract address
@@ -18,7 +18,7 @@ describe("Greeter", function () {
 
     //test to receive listing price and auction price
     let listingPrice = await market.getListingPrice();
-    listingPrice = listingPrice.ToString();
+    listingPrice = listingPrice.toString();
 
     const auctionPrice = ethers.utils.parseUnits('100', 'ether');
 
@@ -26,12 +26,21 @@ describe("Greeter", function () {
     await nft.mintToken('https-t1')
     await nft.mintToken('https-t2')
 
-    await market.makeMarketItem(nftContractAddress, 1 , auctionPrice, {value: listingPrice})
-    await market.makeMarketItem(nftContractAddress, 2 , auctionPrice, {value: listingPrice})
+    await market.makeMarketItem(nftContractAddress, 1, auctionPrice, { value: listingPrice })
+    await market.makeMarketItem(nftContractAddress, 2, auctionPrice, { value: listingPrice })
 
 
     //test for different addresses from different users - test accounts
     //return an array of many addresses
+    const [_, buyerAddress] = await ethers.getSigners()
+
+    //create a market sale with address, id and price
+    await market.connect(buyerAddress).createMarketSale(nftContractAddress, 1, { value: auctionPrice })
+
+    const items = await market.fetchMarketTokens()
+
+    //test out all the items
+    console.log('items', items)
 
   });
 });

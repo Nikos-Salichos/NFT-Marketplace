@@ -65,7 +65,7 @@ contract KBMarket is ReentrancyGuard{
     // 1. create a market item to put it up for sale
     // 2. create a market sale for buying and selling between parties
 
-    function mintMarketItem(
+    function makeMarketItem(
         address nftContract,
         uint tokenId,
         uint price
