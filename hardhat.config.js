@@ -1,7 +1,8 @@
 require("@nomiclabs/hardhat-waffle");
+require('dotenv').config()
 
-const projectId = '15302d023628474c9675e73c06b382cb'
-const privateKey = '82f13e9e763e15f3d6fae80d49ee8e94809bff5a0245ddea0455a099fa69e700'
+const projectId = process.env.projectId;
+const privateKey = process.env.privateKey;
 
 module.exports = {
   defaultNetwork: 'hardhat',
