@@ -17,11 +17,9 @@ a {
   color: #00ced1;
   transition: all 0.2s;
 }
-
 a:hover {
-  opacity: 0.6s;
+  opacity: 0.6;
 }
-
 a:active {
   opacity: 1;
 }

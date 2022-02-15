@@ -5,9 +5,9 @@ import './app.css';
 function NFTMarketplace({ Component, pageProps }) {
   return (
     <div>
-      <nav className='border-b p-6' style={{ backgroundColor: "blue" }}>
-        <p className='text-4x1 font-bold text-white'>NFT Marketplace</p>
-        <div className='flex mt-6 justify-center'>
+      <nav className='border-b p-6' style={{ backgroundColor: 'blue' }}>
+        <p className='text-4x1 font-bold text-white'>NFTMarketplace</p>
+        <div className='flex mt-4 justify-center'>
           <Link href='/'>
             <a className='mr-6'>
               Main Marketplace
@@ -20,7 +20,7 @@ function NFTMarketplace({ Component, pageProps }) {
           </Link>
           <Link href='/my-nfts'>
             <a className='mr-6'>
-              My NFTs
+              My NFts
             </a>
           </Link>
           <Link href='/account-dashboard'>
@@ -30,7 +30,7 @@ function NFTMarketplace({ Component, pageProps }) {
           </Link>
         </div>
       </nav>
-      <Component {...pageProps}></Component>
+      <Component {...pageProps} />
     </div>
   )
 }
