@@ -8,13 +8,13 @@ async function main() {
   console.log("nftMarket contract address deployed to:", nftMarket.address);
 
   const NFT = await hardhat.ethers.getContractFactory("NFT");
-  const nftAddress = await NFT.deploy(nftMarket.address);
-  await nftAddress.deployed();
+  const nft = await NFT.deploy(nftMarket.address);
+  await nft.deployed();
   console.log("NFT contract deployed to:", nftMarket.address);
 
   let config = `
   export const nftMarketAddress = ${nftMarket.address}
-  export const nftAddress = ${nftAddress.address}`
+  export const nftAddress = ${nft.address}`
 
   let data = JSON.stringify(config)
   fs.writeFileSync('config.js', JSON.parse(data))
