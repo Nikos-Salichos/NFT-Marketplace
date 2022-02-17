@@ -20,6 +20,7 @@ async function main() {
   fs.writeFileSync('config.js', JSON.parse(data))
 }
 
+
 // 1st terminal run npx hardhat node
 // 2nd terminal run npx hardhat run scripts/deploy.js --network localhost
 
