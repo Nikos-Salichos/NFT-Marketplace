@@ -22,7 +22,7 @@ export default function Home() {
     // ***provider, tokenContract, marketContract, data for our marketItems
     const provider = new ethers.providers.JsonRpcProvider();
     const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
-    const marketContract = new ethers.Contract(nftMarketAddress, Market.abi, provider);
+    const marketContract = new ethers.Contract(nftMarketAddress, KBMarket.abi, provider);
     const data = await marketContract.fetchMarketItems();
 
     const items = await Promise.all(data.map(async i => {
@@ -44,7 +44,23 @@ export default function Home() {
 
     setNfts(items);
     setLoadingState('Loaded');
+  }
 
+  //function to buy NFTs for market
+  async function buyNFT(nft) {
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(nftMarketAddress, KBMarket.abi, signer);
+
+    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
+    const transaction = await contract.createMarketSale(nftAddress, nf.tokenId, {
+      value:price
+    })
+
+    await transaction.wait()
+    loadNFTs();
 
   }
 
