@@ -33,4 +33,31 @@ export default function MintItem() {
         }
     }
 
+    async function createMarket() {
+        const { name, description, price } = formInput
+        if (!name || !description || !price || !fileUrl) {
+            return;
+        }
+
+        // Upload to IPFS
+        const data = JSON.stringify(){
+            name, description, image: fileUrl
+        }
+        try {
+            const added = await client.add(data)
+            const url = `https://ipfs.infura.io:5001/api/v0/${added.path}`
+            //run a function that creates sale and passes in the url
+            createSale(url)
+        } catch (error) {
+            console.log('Error uploading file:', error)
+        }
+    }
+
+    async function createSale(url) {
+        const web3Modal = new Web3Modal(
+        const connection = await web3Modal.connect()
+        const provider = new ethers.providers.Web3Provider
+        )
+    }
+
 }
