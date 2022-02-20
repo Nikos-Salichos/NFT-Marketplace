@@ -2,6 +2,7 @@ import { ethers } from 'ethers';
 import { useState } from 'react';
 import Web3Modal from 'web3modal'
 import { create as ipfsHttpClient } from 'ipfs-http-client';
+import { useRouter } from 'next/router';
 
 import { nftAddress, nftMarketAddress } from '../config'
 
@@ -78,5 +79,37 @@ export default function MintItem() {
         await transaction.wait;
         router.push('./')
     }
+
+    return (
+        <div className='flex justify-center'>
+            <div className='w-1/2 flex flex-col pb-12'>
+                <input placeholder='Asset Name'
+                    className='mt-8 border rounded p-4'
+                    onChange={e => updateFormInput({ ...formInput, name: e.target.value })}>
+                </input>
+                <textarea placeholder='Asset Description'
+                    className='mt-2 border rounded p-4'
+                    onChange={e => updateFormInput({ ...formInput, description: e.target.value })}>
+                </textarea>
+                <input placeholder='Asset Price in Ethereum'
+                    className='mt-2 border rounded p-4'
+                    onChange={e => updateFormInput({ ...formInput, price: e.target.value })}>
+                </input>
+                <input type='file'
+                    name='Asset'
+                    className='mt-4'
+                    onChange={onChange}>
+                </input>
+
+                {fileUrl && (
+                    <img className='rounded mt-4' width='350px' src={fileUrl}></img>
+                )}
+
+                <button onClick={createMarket} className='font-bold mt-4 bg-purple-500 text-white rounded p-4 shadow-lg'>
+                    Mint NFT
+                </button>
+
+            </div>
+        </div>)
 
 }
