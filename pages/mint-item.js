@@ -27,7 +27,7 @@ export default function MintItem() {
                 file, {
                 progress: (prog) => console.log(`received: ${prog}`)
             })
-            const url = `https://ipfs.infura.io:5001/api/v0/${added.path}`
+            const url = `https://ipfs.infura.io/ipfs/${added.path}`
             setFileUrl(url)
         } catch (error) {
             console.log('Error uploading file:', error)
@@ -46,7 +46,7 @@ export default function MintItem() {
         })
         try {
             const added = await client.add(data)
-            const url = `https://ipfs.infura.io:5001/api/v0/${added.path}`
+            const url = `https://ipfs.infura.io/ipfs/${added.path}`
             //run a function that creates sale and passes in the url
             createSale(url)
         } catch (error) {
@@ -62,7 +62,7 @@ export default function MintItem() {
         const signer = provider.getSigner()
 
         // we create the token
-        let contract = new ethers.Contract(nftAddress, NFT.abi, singer);
+        let contract = new ethers.Contract(nftAddress, NFT.abi, signer);
         let transaction = await contract.mintToken(url)
         let tx = await transaction.wait()
         let event = tx.events[0];
@@ -83,33 +83,38 @@ export default function MintItem() {
     return (
         <div className='flex justify-center'>
             <div className='w-1/2 flex flex-col pb-12'>
-                <input placeholder='Asset Name'
+                <input
+                    placeholder='Asset Name'
                     className='mt-8 border rounded p-4'
-                    onChange={e => updateFormInput({ ...formInput, name: e.target.value })}>
-                </input>
-                <textarea placeholder='Asset Description'
+                    onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
+                />
+                <textarea
+                    placeholder='Asset Description'
                     className='mt-2 border rounded p-4'
-                    onChange={e => updateFormInput({ ...formInput, description: e.target.value })}>
-                </textarea>
-                <input placeholder='Asset Price in Ethereum'
+                    onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
+                />
+                <input
+                    placeholder='Asset Price in Eth'
                     className='mt-2 border rounded p-4'
-                    onChange={e => updateFormInput({ ...formInput, price: e.target.value })}>
-                </input>
-                <input type='file'
+                    onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
+                />
+                <input
+                    type='file'
                     name='Asset'
                     className='mt-4'
-                    onChange={onChange}>
-                </input>
-
-                {fileUrl && (
-                    <img className='rounded mt-4' width='350px' src={fileUrl}></img>
-                )}
-
-                <button onClick={createMarket} className='font-bold mt-4 bg-purple-500 text-white rounded p-4 shadow-lg'>
+                    onChange={onChange}
+                /> {
+                    fileUrl && (
+                        <img className='rounded mt-4' width='350px' src={fileUrl} />
+                    )}
+                <button onClick={createMarket}
+                    className='font-bold mt-4 bg-purple-500 text-white rounded p-4 shadow-lg'
+                >
                     Mint NFT
                 </button>
-
             </div>
-        </div>)
+        </div>
+    )
+
 
 }

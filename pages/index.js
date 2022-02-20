@@ -9,6 +9,11 @@ import NFT from '../artifacts/contracts/NFT.sol/NFT.json';
 import KBMarket from '../artifacts/contracts/KBMarket.sol/KBMarket.json'
 
 
+//terminal orders
+// npm run dev
+// npx hardhat node
+// npx hardhat run script/deploy.js --network localhost
+
 export default function Home() {
   const [nfts, setNFts] = useState([])
   const [loadingState, setLoadingState] = useState('Not-loaded')
@@ -42,8 +47,8 @@ export default function Home() {
       return item;
     }))
 
-    setNfts(items);
-    setLoadingState('Loaded');
+    setNFts(items);
+    setLoadingState('loaded');
   }
 
   //function to buy NFTs for market
@@ -63,13 +68,13 @@ export default function Home() {
     loadNFTs();
   }
 
-  if (loadingState === 'Loaded' && !nfts.loaded) return (<h1
+  if (loadingState === 'loaded' && !nfts.length) return (<h1
     className='px-20 py-7 text-4x1'>No NFTs in Marketplace</h1>)
 
 
   return (
     <div className='flex justify-center'>
-      <div className='px-4' style={{ maxWidth: '160px' }}>
+      <div className='px-4' style={{ maxWidth: '1600px' }}>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4'>
           {
             nfts.map((nft, i) => {

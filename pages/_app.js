@@ -1,6 +1,6 @@
 import '../styles/globals.css'
-import Link from 'next/link'
 import './app.css';
+import Link from 'next/link'
 
 function NFTMarketplace({ Component, pageProps }) {
   return (
