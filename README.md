@@ -1,8 +1,8 @@
-# FSW-Multivendor-Marketplace
+# NFT-Marketplace
 
 It is an NFT-Marketplace with the following concepts:
 -	See all NFTs from all users.
--	Mint your own NFTs (connect with Metamask) and set your own selling price.
+-	Mint your own NFTs and set your own selling price.
 -	See all NFTs that you own.
 -	Account Dashboard.
 
