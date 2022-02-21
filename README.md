@@ -8,7 +8,6 @@ It is an NFT-Marketplace with the following concepts:
 
 
 **Technologies**
-
 Backend:
 - Next.js https://nextjs.org/
 - Solidity https://docs.soliditylang.org/en/v0.8.12/
@@ -23,11 +22,17 @@ Frontend:
 Storage:
 -	IPFS https://ipfs.io/
 
-Setup
-Open terminal and write:
+**Requirements**
+
+- Infura key https://infura.io/
+- Metamask wallet (or any other crypto wallet) https://metamask.io/
+
+**Instructions**
+
+In terminal:
 -	npm install
 -	npm run dev (start next.js)
--	npm hardhat node (start hardhat)
--	npm hardhat run script/deploy.js --network localhost (deploy smart contract)
+-	npx hardhat node (start hardhat)
+-	npx hardhat run script/deploy.js --network localhost (deploy smart contract)
 -	Load localhost in browser
 
