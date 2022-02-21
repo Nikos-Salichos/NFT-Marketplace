@@ -15,9 +15,11 @@ Backend:
 -	Ethers.js https://docs.ethers.io/
 -	Hardhat framework https://hardhat.org/
 -	OpenZeppelin https://openzeppelin.com/
+
 Frontend:
 -	React https://reactjs.org/
 -	Tailwind css https://tailwindcss.com/
+
 Storage:
 -	IPFS https://ipfs.io/
 
