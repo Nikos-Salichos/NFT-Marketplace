@@ -1,29 +1,31 @@
-# Basic Sample Hardhat Project
+# FSW-Multivendor-Marketplace
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+It is an NFT-Marketplace with the following concepts:
+-	See all NFTs from all users.
+-	Mint your own NFTs (connect with Metamask) and set your own selling price.
+-	See all NFTs that you own.
+-	Account Dashboard.
 
 
-NFT-Marketplace
+**Technologies**
 
-I have use the following technologies:
+Backend:
+- Next.js https://nextjs.org/
+- Solidity https://docs.soliditylang.org/en/v0.8.12/
+-	Ethers.js https://docs.ethers.io/
+-	Hardhat framework https://hardhat.org/
+-	OpenZeppelin https://openzeppelin.com/
+Frontend:
+-	React https://reactjs.org/
+-	Tailwind css https://tailwindcss.com/
+Storage:
+-	IPFS https://ipfs.io/
 
-- Solidity
-- Javascript
-- Nextjs
-- IPFS
-- Hardhat
-- OpenZeppelin
-- Ethers
-- Tailwind
+Setup
+Open terminal and write:
+-	npm install
+-	npm run dev (start next.js)
+-	npm hardhat node (start hardhat)
+-	npm hardhat run script/deploy.js --network localhost (deploy smart contract)
+-	Load localhost in browser
+
