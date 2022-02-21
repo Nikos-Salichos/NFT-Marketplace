@@ -36,3 +36,11 @@ In terminal:
 -	npx hardhat run script/deploy.js --network localhost (deploy smart contract)
 -	Load localhost in browser
 
+![nextjs](https://user-images.githubusercontent.com/70713775/155010856-415fdcda-f028-4156-b0e6-d471faf24ee3.png)
+![solidity](https://user-images.githubusercontent.com/70713775/155010893-71fe47f7-024c-4893-b56e-01c8acf5ffe8.jpg)
+![ethers-js](https://user-images.githubusercontent.com/70713775/155010910-ec54d78d-7195-4c24-a2a6-35f3de619339.png)
+![hardhat](https://user-images.githubusercontent.com/70713775/155010919-5ca0fa8f-6bf5-4dd8-9904-e4d239c5bb0c.jpg)
+![openzeppelin](https://user-images.githubusercontent.com/70713775/155010928-33a8ac99-3701-4647-bdb2-b09c5c3ba140.png)
+![react](https://user-images.githubusercontent.com/70713775/155010936-920c6e6b-a057-4d6f-b619-303a081f4d44.png)
+![tailwindcss](https://user-images.githubusercontent.com/70713775/155010969-1d31d918-e2a1-4c1f-a520-156ca528247c.jpg)
+![ipfs](https://user-images.githubusercontent.com/70713775/155010980-6d34ba60-a90e-4fe2-92e0-a37ba9d70cc1.png)
