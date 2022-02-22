@@ -36,9 +36,8 @@ In terminal:
 -	npx hardhat run script/deploy.js --network localhost (deploy smart contract)
 -	copy paste a private key and import it in Metamask (you need to do it only once)
 -	In file config.js type single quotes like:
--	
+
   export const nftMarketAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
-  
   export const nftAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
   
 -	Open localhost in browser
