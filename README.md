@@ -34,7 +34,14 @@ In terminal:
 -	npm run dev (start next.js)
 -	npx hardhat node (start hardhat)
 -	npx hardhat run script/deploy.js --network localhost (deploy smart contract)
--	Load localhost in browser
+-	copy paste a private key and import it in Metamask (you need to do it only once)
+-	In file config.js type single quotes like:
+  export const nftMarketAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+  export const nftAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
+-	Open localhost in browser
+
+I suggest you every time you connect to localhost to click Settings--> Advanced --> Reset Account 
+You need to reset nonce each time you restart the local node.
 
 ![nextjs](https://user-images.githubusercontent.com/70713775/155010856-415fdcda-f028-4156-b0e6-d471faf24ee3.png)
 ![solidity](https://user-images.githubusercontent.com/70713775/155010893-71fe47f7-024c-4893-b56e-01c8acf5ffe8.jpg)
