@@ -44,7 +44,8 @@ In terminal:
 -	Open localhost in browser
 
 I suggest you every time you connect to localhost to click Settings--> Advanced --> Reset Account 
-You need to reset nonce each time you restart the local node.
+
+You need to reset nonce each time you restart the local node (because Metamask holds your last nonce)
 
 ![nextjs](https://user-images.githubusercontent.com/70713775/155010856-415fdcda-f028-4156-b0e6-d471faf24ee3.png)
 ![solidity](https://user-images.githubusercontent.com/70713775/155010893-71fe47f7-024c-4893-b56e-01c8acf5ffe8.jpg)
